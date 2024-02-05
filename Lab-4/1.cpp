@@ -40,7 +40,7 @@ int merge(int arr[], int temp[], int left, int mid, int right)
 		else
 		{
 			temp[k++] = arr[j++];
-			inv_count = inv_count + (mid - i);
+			inv_count += (mid - i);
 		}
 	}
 
