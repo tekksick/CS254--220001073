@@ -33,11 +33,11 @@ int main()
 			adj[i][j] = !c;
 		}
 	}
-	vector<int> cans(n, -1);
+	vector<int> temp(n, -1);
 	int ans = -1, d = 0;
 	for (int i = 0; i < n; i++)
 	{
-		if (cans[i] == -1)
+		if (temp[i] == -1)
 		{
 			if (ans != -1)
 			{
