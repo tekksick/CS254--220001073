@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
 bool v[100000];
@@ -50,8 +50,8 @@ int BFS(int move[], int n)
 
 int main()
 {
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
+	freopen("input2.txt", "r", stdin);
+	freopen("output2.txt", "w", stdout);
 	int n, l, s;
 	cin >> n >> l >> s;
 	int move[n];
@@ -66,5 +66,4 @@ int main()
 		move[a - 1] = b - 1;
 	}
 	cout << BFS(move, n) << endl;
-	return 0;
 }
