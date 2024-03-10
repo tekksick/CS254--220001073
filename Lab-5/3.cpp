@@ -23,29 +23,21 @@ int main()
 	freopen("input3.txt", "r", stdin);
 	freopen("output3.txt", "w", stdout);
 	cin >> n;
-	vector<vector<bool>> adj(n, vector<bool>(n));
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = 0; j < n; j++)
-		{
-			bool c;
-			cin >> c;
-			adj[i][j] = !c;
-		}
+	vector<vector<int>> adj(n, vector<int>(n));
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++)		
+			cin>>adj[i][j];
 	}
 	vector<int> temp(n, -1);
 	int ans = -1, d = 0;
-	for (int i = 0; i < n; i++)
-	{
-		if (temp[i] == -1)
-		{
-			if (ans != -1)
-			{
+	for (int i = 0; i < n; i++) {
+		if (temp[i] == -1) {
+			if (ans != -1) {
 				cout << "No"<<endl;
 				d = 1;
 				break;
 			}
-			if (is_bipartite(i, 0, cans, adj))
+			if (is_bipartite(i, 0, temp, adj))
 				ans = 1;
 			else
 				ans = 0;
