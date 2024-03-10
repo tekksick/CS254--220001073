@@ -24,7 +24,6 @@ Graph::Graph(int V)
 	adj = new list<int>[V];
 }
 
-// DFS
 void Graph::DFS(int s, bool visitedV[])
 {
 	visitedV[s] = true;
@@ -36,7 +35,6 @@ void Graph::DFS(int s, bool visitedV[])
 			DFS(*i, visitedV);
 }
 
-// Transpose
 Graph Graph::transpose()
 {
 	Graph g(V);
@@ -51,7 +49,6 @@ Graph Graph::transpose()
 	return g;
 }
 
-// Add edge into the graph
 void Graph::addEdge(int s, int d)
 {
 	adj[s].push_back(d);
@@ -69,7 +66,6 @@ void Graph::fillOrder(int s, bool visitedV[], stack<int> &Stack)
 	Stack.push(s);
 }
 
-// Print strongly connected component
 void Graph::printSCC()
 {
 	stack<int> Stack;
