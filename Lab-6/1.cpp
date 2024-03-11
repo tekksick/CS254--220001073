@@ -49,3 +49,5 @@ int main()
 	cout << "Topological sorting of the graph: ";
 	topologicalSort(adj, V);
 }
+//tc: o(v+e)
+//sc: o(v)
