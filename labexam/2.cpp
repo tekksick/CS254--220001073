@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-#define INT_MAX 1e7;
+#define INT_MAX = 1e7;
 
 long long f1(int n) {
 	if(n<1e5)     //assume m=1e5 (10^5)
