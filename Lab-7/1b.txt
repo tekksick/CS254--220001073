@@ -1,1 +1,3 @@
-The greedy algorithm described above may not always provide the optimal solution. The reason is that it chooses items based solely on their value-to-weight ratio without considering the total weight capacity left. This can lead to situations where including an item with a lower ratio could lead to a higher overall value.
+The greedy algorithm described above may not always provide the optimal solution. 
+The reason is that it chooses items based solely on their value-to-weight ratio without considering the total weight capacity left. 
+This can lead to situations where including an item with a lower ratio could lead to a higher overall value.
