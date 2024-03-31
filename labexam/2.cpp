@@ -1,22 +1,21 @@
 #include <iostream>
 using namespace std;
-#define INT_MAX = 1e7;
 
-long long f1(int n) {
-	if(n<=1e5)     //assume m=1e5 (10^5)
+long long f1(int n,int m) {
+	if(n<=m)     
 		return n * n;
 	else
 		return -1 * n * n;
 }
 
-long long f2(int n)
+long long f2(int n,int m)
 {
 	int e = 2.3;
 	long long ans = 1;
 	for (int i = 0; i < n;i++){
 		ans *= e;
 	}
-	if(n<=1e5)
+	if(n<=m)
 		return ans;
 	else
 		return -1 * ans;

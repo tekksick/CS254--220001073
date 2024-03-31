@@ -1,0 +1,1 @@
+cout << "Total value: " << totalValue << endl;
