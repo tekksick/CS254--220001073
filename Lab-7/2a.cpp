@@ -24,6 +24,7 @@ vector<char> scheduleJobsGreedy(vector<Job> &jobs)
 
 	vector<char> scheduledJobs;
 	vector<bool> slots(jobs.size(), false);
+	int totalProfit = 0;
 
 	for (int i = 0; i < jobs.size(); ++i)
 	{
@@ -32,11 +33,14 @@ vector<char> scheduleJobsGreedy(vector<Job> &jobs)
 			if (!slots[j])
 			{
 				scheduledJobs.push_back(jobs[i].id);
+				totalProfit += jobs[i].profit;
 				slots[j] = true;
 				break;
 			}
 		}
 	}
+
+	cout << "Total profit = " << totalProfit << endl;
 
 	return scheduledJobs;
 }
@@ -61,21 +65,6 @@ int main()
 		}
 	}
 	cout << "]" << endl;
-
-	int totalProfit = 0;
-	for (char job : scheduledJobs)
-	{
-		for (const auto &j : jobs)
-		{
-			if (j.id == job)
-			{
-				totalProfit += j.profit;
-				break;
-			}
-		}
-	}
-
-	cout << "Total profit = " << totalProfit << endl;
 
 	return 0;
 }

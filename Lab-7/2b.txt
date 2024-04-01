@@ -1,3 +1,2 @@
-The greedy algorithm described above may not always provide the optimal solution. 
-This is because it prioritizes jobs with higher profits without considering their deadlines thoroughly. 
-In certain cases, this approach may lead to suboptimal solutions.
+The greedy algorithm described above  always provides the optimal solution. 
+But with a complexity of O(n^2)

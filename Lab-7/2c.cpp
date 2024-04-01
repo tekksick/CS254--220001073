@@ -1,76 +1,68 @@
-// Dynamic Programming approach
-
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 struct Job
 {
-	char id;
-	int deadline;
-	int profit;
+	char id;	
+	int dead;	
+	int profit; 
 };
 
-bool compare(Job a, Job b)
+struct jobProfit
 {
-	return a.profit > b.profit;
-}
-
-int scheduleJobsOptimal(vector<Job> &jobs, vector<char> &scheduledJobs)
-{
-	sort(jobs.begin(), jobs.end(), compare);
-
-	int maxDeadline = 0;
-	for (const auto &job : jobs)
+	bool operator()(Job const &a, Job const &b)
 	{
-		maxDeadline = max(maxDeadline, job.deadline);
+		return (a.profit < b.profit);
 	}
+};
 
-	vector<int> slots(maxDeadline, -1);
+void printJobScheduling(Job arr[], int n)
+{
+	vector<Job> result;
+	sort(arr, arr + n,[](Job a, Job b){ return a.dead < b.dead; });
 
+	priority_queue<Job, vector<Job>, jobProfit> pq;
 	int totalProfit = 0;
-	for (const auto &job : jobs)
+	for (int i = n - 1; i >= 0; i--)
 	{
-		for (int j = job.deadline - 1; j >= 0; --j)
+		int slot_available;
+		if (i == 0)
 		{
-			if (slots[j] == -1)
-			{
-				slots[j] = job.profit;
-				scheduledJobs.push_back(job.id);
-				totalProfit += job.profit;
-				break;
-			}
+			slot_available = arr[i].dead;
+		}
+		else
+		{
+			slot_available = arr[i].dead - arr[i - 1].dead;
+		}
+		pq.push(arr[i]);
+		while (slot_available > 0 && pq.size() > 0)
+		{
+			Job job = pq.top();
+			pq.pop();
+			slot_available--;
+			result.push_back(job);
+			totalProfit += job.profit;
 		}
 	}
 
-	return totalProfit;
+	sort(result.begin(), result.end(),[&](Job a, Job b){ return a.dead < b.dead; });
+
+	for (int i = 0; i < result.size(); i++)  cout << result[i].id << ' ';
+	cout << endl;
+	cout << "Total profit = " << totalProfit << endl;
 }
 
 int main()
 {
-	vector<Job> jobs = {
+	Job arr[] = {
 		{'a', 4, 20},
 		{'b', 1, 10},
 		{'c', 1, 40},
 		{'d', 1, 30}};
 
-	vector<char> scheduledJobs;
-	int totalProfit = scheduleJobsOptimal(jobs, scheduledJobs);
+	int n = sizeof(arr) / sizeof(arr[0]);
+	cout << "Maximum profit sequence of jobs: " ;
 
-	cout << "Maximum profit sequence of jobs: [";
-	for (int i = 0; i < scheduledJobs.size(); ++i)
-	{
-		cout << scheduledJobs[i];
-		if (i < scheduledJobs.size() - 1)
-		{
-			cout << ", ";
-		}
-	}
-	cout << "]" << endl;
-
-	cout << "Total profit = " << totalProfit << endl;
-
+	printJobScheduling(arr, n);
 	return 0;
 }
