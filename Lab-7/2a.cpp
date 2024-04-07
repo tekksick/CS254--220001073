@@ -48,10 +48,11 @@ vector<char> scheduleJobsGreedy(vector<Job> &jobs)
 int main()
 {
 	vector<Job> jobs = {
-		{'a', 4, 20},
-		{'b', 1, 10},
-		{'c', 1, 40},
-		{'d', 1, 30}};
+		{'a', 2,100},
+		{'b', 1, 19},
+		{'c', 2, 27},
+		{'d', 1, 25},
+		{'e',3,15}};
 
 	vector<char> scheduledJobs = scheduleJobsGreedy(jobs);
 
